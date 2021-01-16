@@ -1,7 +1,7 @@
 #!/bin/python3
 
 import os,sys,datetime,time,signal
-successlogfile = 'README.md'
+#successlogfile = 'README.md'
 
 #https://stackoverflow.com/questions/287871/how-to-print-colored-text-to-the-terminal
 class bcolors:
@@ -50,7 +50,7 @@ def logEvent(text,logfile='',raw=False):
     PI_USER = os.environ['USER']
 
     if logfile=='':
-        logfile = f'{PI_USER}_fails.md'
+        logfile = f'{PI_USER}.md'
 
     with open(logfile,'a+') as g:
         if raw:
@@ -79,7 +79,7 @@ def login():
     cmdstatus = os.system('git push')
     
     if(cmdstatus==0):
-        logEvent(f'{uscemail} login succeeded',successlogfile)
+        logEvent(f'{uscemail} login succeeded')
         print(intro)
         os.system('cd ~ && bash')
         print(outro)
