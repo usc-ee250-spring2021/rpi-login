@@ -61,9 +61,9 @@ def logEvent(text,logfile='',raw=False):
 def login():
     logEvent('\n',raw=True) # add an extra newline
 
-    os.system('git pull') #needed synchronise between login of diff users
+    #os.system('git pull') #needed synchronise between login of diff users
     
-    print(f'{bcolors.BOLD+bcolors.OKBLUE}We use Github [using `git push (--dry-run?)`] for login and USC Email for recording login events')
+    print(f'{bcolors.BOLD+bcolors.OKBLUE}We use Github [using `git pull`] for login and USC Email for recording login events')
     while True:
         print(f"{bcolors.WARNING+bcolors.BOLD}Email (@usc.edu): ",end=f'{bcolors.ENDC}')
         uscemail = input().strip()
@@ -76,7 +76,7 @@ def login():
 
     os.system('git add *.md')
     os.system('git commit -m "{logtext}"')
-    cmdstatus = os.system('git push')
+    cmdstatus = os.system('git pull')
     
     if(cmdstatus==0):
         logEvent(f'{uscemail} login succeeded')
